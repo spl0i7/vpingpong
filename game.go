@@ -11,7 +11,6 @@ type Game struct {
 
 func NewGame(p1, p2 *Player)  *Game {
 
-
 	return &Game{
 		First: &ScoreBoard{
 			Player: p1,

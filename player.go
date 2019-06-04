@@ -38,6 +38,15 @@ func (p *Player) ReverseRole() {
 	}
 }
 
+func (p *Player) SetOffensiveMode() {
+	p.Mode = MODE_OFFENSIVE
+
+}
+
+func (p *Player) SetDefensiveMode() {
+	p.Mode = MODE_DEFENSIVE
+}
+
 
 func NewPlayer(name string,  arr []int) *Player {
 	return &Player{
