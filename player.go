@@ -4,6 +4,7 @@ import "math/rand"
 
 const MODE_DEFENSIVE = 0
 const MODE_OFFENSIVE = 1
+const MODE_NONE = -1
 
 type Player struct {
 	Name string
@@ -19,6 +20,16 @@ func (p *Player) GenerateOffensiveNumber() int {
 	return rand.Intn(11)
 }
 
+func (p *Player) IsDefensiveHavingNumber(n int) bool {
+	for i := 0; i < len(p.DefenseArray); i++ {
+		if p.DefenseArray[i] == n {
+			return true
+		}
+	}
+	return false
+
+}
+
 func (p *Player) ReverseRole() {
 	if p.Mode == MODE_DEFENSIVE {
 		p.Mode = MODE_OFFENSIVE
@@ -28,10 +39,10 @@ func (p *Player) ReverseRole() {
 }
 
 
-func NewPlayer(name string, mode int, arr []int) *Player {
+func NewPlayer(name string,  arr []int) *Player {
 	return &Player{
 		Name:         name,
-		Mode:         mode,
+		Mode:         MODE_NONE,
 		DefenseArray: arr,
 	}
 }
