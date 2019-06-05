@@ -1,6 +1,9 @@
 package main
 
-import "math/rand"
+import (
+	"math/rand"
+	"time"
+)
 
 const MODE_DEFENSIVE = 0
 const MODE_OFFENSIVE = 1

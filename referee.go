@@ -40,7 +40,7 @@ func (r *Referee) StartGame() error {
 	for len(r.Players) > 1 {
 
 		round += 1
-		fmt.Printf("======= Round %d =======\n\n", round)
+		fmt.Printf("======= Elimination %d =======\n\n", round)
 		var losers []*Player
 
 		for i := 0; i < len(r.Players); i += 2 {
