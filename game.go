@@ -25,8 +25,6 @@ func NewGame(p1, p2 *Player)  *Game {
 
 func (g *Game) Play() *Player {
 
-	// we already know p1 is offensive and p2 is defensive
-
 	for g.First.Score < 5 || g.Second.Score < 5 {
 
 		var offensive, defensive *ScoreBoard
@@ -40,6 +38,7 @@ func (g *Game) Play() *Player {
 		}
 
 		offensiveChoice := offensive.Player.GenerateOffensiveNumber()
+		defensive.Player.GenerateDefenceArray()
 		if defensive.Player.IsDefensiveHavingNumber(offensiveChoice) {
 			defensive.Score += 1
 		} else {

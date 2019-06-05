@@ -4,11 +4,9 @@ import "testing"
 
 func TestGame_Play(t *testing.T) {
 
-
-
 	for i := 0; i < 1000; i++ {
-		p1 := NewPlayer("A", newDefenceArray(4))
-		p2 := NewPlayer("B", newDefenceArray(8))
+		p1 := NewPlayer("A")
+		p2 := NewPlayer("B")
 		p1.SetDefensiveMode()
 		p2.SetOffensiveMode()
 		g := NewGame(p1, p2)
@@ -23,8 +21,8 @@ func TestGame_Play(t *testing.T) {
 
 func TestNewGame(t *testing.T) {
 
-	p1 := NewPlayer("A", newDefenceArray(7))
-	p2 := NewPlayer("B", newDefenceArray(7))
+	p1 := NewPlayer("A")
+	p2 := NewPlayer("B")
 
 	g := NewGame(p1, p2)
 

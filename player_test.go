@@ -6,24 +6,24 @@ import (
 )
 
 func TestNewPlayer(t *testing.T) {
-	p1 := NewPlayer("A", newDefenceArray(0))
-	p2 := NewPlayer("B", newDefenceArray(3))
+	p1 := NewPlayer("A")
+	p2 := NewPlayer("B")
 
 	if p1 == nil || p2 == nil {
 		t.Fatal("could not create player")
 	}
 
-	if p1.Name != "A" || p1.Mode != MODE_NONE|| len(p1.DefenseArray) != 0 {
+	if p1.Name != "A" || p1.Mode != MODE_NONE|| p1.DefenseArray != nil {
 		t.Fatal("unexpected initialization")
 	}
 
-	if p2.Name != "B" || p2.Mode != MODE_NONE || len(p2.DefenseArray) != 3 {
+	if p2.Name != "B" || p2.Mode != MODE_NONE || p1.DefenseArray != nil {
 		t.Fatal("unexpected initialization")
 	}
 }
 
 func TestPlayer_ReverseRole(t *testing.T) {
-	p1 := NewPlayer("A", newDefenceArray(0))
+	p1 := NewPlayer("A")
 	p1.SetDefensiveMode()
 	if p1 == nil {
 		t.Fatal("could not create player")
@@ -46,7 +46,7 @@ func TestPlayer_ReverseRole(t *testing.T) {
 }
 
 func TestPlayer_GenerateOffensiveNumber(t *testing.T) {
-	p1 := NewPlayer("A", newDefenceArray(0))
+	p1 := NewPlayer("A")
 	if p1 == nil {
 		t.Fatal("could not create player")
 	}
@@ -59,7 +59,8 @@ func TestPlayer_GenerateOffensiveNumber(t *testing.T) {
 }
 
 func TestPlayer_IsDefensiveHavingNumber(t *testing.T) {
-	p1 := NewPlayer("A", []int {3, 10, 12 , 134})
+	p1 := NewPlayer("A")
+	p1.DefenseArray = []int {3, 10, 12 , 134}
 	p1.SetDefensiveMode()
 
 	if !p1.IsDefensiveHavingNumber(12) {

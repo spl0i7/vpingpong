@@ -48,14 +48,56 @@ func (p *Player) SetDefensiveMode() {
 }
 
 
-func NewPlayer(name string,  arr []int) *Player {
+func NewPlayer(name string) *Player {
 	return &Player{
 		Name:         name,
 		Mode:         MODE_NONE,
-		DefenseArray: arr,
+		DefenseArray: nil,
 	}
 }
 
+
+func (l *Player) GenerateDefenceArray() {
+
+	if l.Name == "Joey" {
+		l.DefenseArray = newDefenceArray(7)
+
+	} else if l.Name == "Monica" {
+
+		l.DefenseArray = newDefenceArray(6)
+
+	} else if l.Name == "Chandler" {
+
+		l.DefenseArray = newDefenceArray(6)
+
+	} else if l.Name == "Ross" {
+
+		l.DefenseArray = newDefenceArray(5)
+
+	} else if l.Name == "Phoebe" {
+
+		l.DefenseArray = newDefenceArray(5)
+
+	} else if l.Name == "Rachel" {
+
+		l.DefenseArray = newDefenceArray(6)
+
+	} else if l.Name == "Sachin" {
+
+		l.DefenseArray = newDefenceArray(4)
+
+	} else if l.Name == "Rohan" {
+
+		l.DefenseArray = newDefenceArray(5)
+
+	} else {
+
+		l.DefenseArray = newDefenceArray(10)
+	}
+
+
+
+}
 
 func newDefenceArray(arraysize int) []int {
 
