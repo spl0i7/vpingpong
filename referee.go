@@ -1,8 +1,8 @@
 package main
 
 import (
+	"errors"
 	"fmt"
-	"github.com/pkg/errors"
 )
 
 type Referee struct {
@@ -37,7 +37,7 @@ func (r *Referee) StartGame() error {
 
 	round := 0
 
-	for len(r.Players) != 1 {
+	for len(r.Players) > 1 {
 
 		round += 1
 		fmt.Printf("=== Round %d ===\n\n", round)
@@ -87,7 +87,9 @@ func (r *Referee) RemoveLoser(w, p1, p2 *Player) {
 		}
 	}
 
-	r.Players[loserIndex] = r.Players[len(r.Players) - 1]
-	r.Players = r.Players[:len(r.Players)]
+	lastIndex := len(r.Players) - 1
+
+	r.Players[loserIndex] = r.Players[lastIndex]
+	r.Players = r.Players[:lastIndex]
 
 }

@@ -1,6 +1,8 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestNewReferee(t *testing.T) {
 
@@ -11,6 +13,39 @@ func TestNewReferee(t *testing.T) {
 }
 
 func TestReferee_StartGame(t *testing.T) {
+
+	r := NewReferee()
+
+	r.AddPlayer(NewPlayer("A"))
+	r.AddPlayer(NewPlayer("B"))
+	r.AddPlayer(NewPlayer("C"))
+	r.AddPlayer(NewPlayer("D"))
+	r.AddPlayer(NewPlayer("E"))
+	r.AddPlayer(NewPlayer("F"))
+	r.AddPlayer(NewPlayer("G"))
+	r.AddPlayer(NewPlayer("H"))
+
+	err := r.StartGame()
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	r = NewReferee()
+
+	r.AddPlayer(NewPlayer("A"))
+	r.AddPlayer(NewPlayer("B"))
+	r.AddPlayer(NewPlayer("C"))
+	r.AddPlayer(NewPlayer("D"))
+	err = r.StartGame()
+	if err == nil {
+		t.Fatal("expected error")
+	}
+
+
+
+
+
+
 
 }
 
@@ -62,5 +97,34 @@ func TestReferee_CanPlayGame(t *testing.T) {
 }
 
 func TestReferee_RemoveLoser(t *testing.T) {
+
+	p1 := NewPlayer("A")
+	p2 := NewPlayer("B")
+
+	r := NewReferee()
+
+	r.AddPlayer(p1)
+	r.AddPlayer(p2)
+
+	r.RemoveLoser(p1, p1, p2)
+
+	if  r.Players[0] != p1 {
+		t.Fatal("did not remove loser player")
+	}
+
+	r = NewReferee()
+	r.AddPlayer(p1)
+	r.AddPlayer(p2)
+
+
+	r.RemoveLoser(p2, p1, p2)
+
+	if  r.Players[0] != p2 {
+		t.Fatal("did not remove loser player")
+	}
+
+
+
+
 
 }
