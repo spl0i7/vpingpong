@@ -104,6 +104,8 @@ func (l *Player) GenerateDefenceArray() {
 
 func newDefenceArray(arraysize int) []int {
 
+	rand.Seed(time.Now().UnixNano())
+
 	k := make([]int, arraysize)
 
 	for i := 0; i < arraysize; i++ {
