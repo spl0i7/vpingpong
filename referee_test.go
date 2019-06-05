@@ -42,11 +42,6 @@ func TestReferee_StartGame(t *testing.T) {
 	}
 
 
-
-
-
-
-
 }
 
 func TestReferee_AddPlayer(t *testing.T) {
@@ -106,7 +101,7 @@ func TestReferee_RemoveLoser(t *testing.T) {
 	r.AddPlayer(p1)
 	r.AddPlayer(p2)
 
-	r.RemoveLoser(p1, p1, p2)
+	r.RemovePlayers([]*Player{p2})
 
 	if  r.Players[0] != p1 {
 		t.Fatal("did not remove loser player")
@@ -117,14 +112,10 @@ func TestReferee_RemoveLoser(t *testing.T) {
 	r.AddPlayer(p2)
 
 
-	r.RemoveLoser(p2, p1, p2)
+	r.RemovePlayers([]*Player{p1})
 
 	if  r.Players[0] != p2 {
 		t.Fatal("did not remove loser player")
 	}
-
-
-
-
 
 }
